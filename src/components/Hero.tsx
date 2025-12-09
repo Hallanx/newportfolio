@@ -1,10 +1,19 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { Github, Linkedin, Instagram, ChevronDown, Download } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useState, useEffect } from 'react';
 
 export default function Hero() {
   const { t, language } = useLanguage();
+  const [showPhoto, setShowPhoto] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowPhoto((prev) => !prev);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const cvFiles = {
     pt: '/Alan_Vaz_Cardoso_CV.pdf',
@@ -258,11 +267,35 @@ export default function Hero() {
                 className="absolute -inset-8 rounded-full border border-purple-500/20"
               />
 
-              {/* Profile Picture */}
+              {/* Profile Picture - Alternating */}
               <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-gradient-to-r from-cyan-500 to-purple-500 p-1">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full" />
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-[#0a0a0f] flex items-center justify-center">
-                  <div className="text-8xl">👨‍💻</div>
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-[#0a0a0f]">
+                  <AnimatePresence mode="wait">
+                    {showPhoto ? (
+                      <motion.img
+                        key="photo"
+                        src="/alan-photo.jpg"
+                        alt="Alan Vaz Cardoso"
+                        className="w-full h-full object-cover"
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    ) : (
+                      <motion.div
+                        key="avatar"
+                        className="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-900/50 to-purple-900/50"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <div className="text-8xl">👨‍💻</div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
 
