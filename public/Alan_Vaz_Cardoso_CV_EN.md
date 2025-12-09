@@ -3,7 +3,7 @@
 
 📍 São Paulo, SP - Brazil | 📱 +55 (11) 94736-2646 | ✉️ alanvazcardoso@gmail.com
 
-🔗 [LinkedIn](https://www.linkedin.com/in/alan-vaz-cardoso-8a4401324) | 🔗 [GitHub](https://github.com/Hallanx) | 🌐 [Portfolio](https://www.santaiajuda.com)
+🔗 [LinkedIn](https://www.linkedin.com/in/alan-vaz-cardoso-8a4401324) | 🔗 [GitHub](https://github.com/Hallanx) | 🌐 [Portfolio](https://newportfolio-phi-dun.vercel.app)
 
 ---
 
